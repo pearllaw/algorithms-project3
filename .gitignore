@@ -33,3 +33,6 @@
 
 # Compiled Test Files
 hashing_test
+
+# VS files
+.vscode

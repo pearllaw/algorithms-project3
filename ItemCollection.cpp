@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
+#include <cmath>
 #include "ItemCollection.hpp"
 
 using std::string;
@@ -11,53 +12,52 @@ using std::endl;
 
 // function to return the hash value based on the first digit
 unsigned int hashfct1(unsigned int barcode) {
-  // TO BE COMPLETED
-    unsigned int d;
-    return d;
+  int pos = 7;
+  int digit = (barcode / (int)pow(10, pos - 1)) % 10;
+  return digit;
 }
 
 // function to return the hash value based on the second digit
 unsigned int hashfct2(unsigned int barcode) {
-  // TO BE COMPLETED
-    unsigned int d;
-    return d;
+  int pos = 6;
+  int digit = (barcode / (int)pow(10, pos - 1)) % 10;
+  return digit;
 }
 
 // function to return the hash value based on the third digit
 unsigned int hashfct3(unsigned int barcode) {
-  // TO BE COMPLETED
-    unsigned int d;
-    return d;
+  int pos = 5;
+  int digit = (barcode / (int)pow(10, pos - 1)) % 10;
+  return digit;
 }
 
 // function to return the hash value based on the fourth digit
 unsigned int hashfct4(unsigned int barcode) {
-  // TO BE COMPLETED
-    unsigned int d;
-    return d;
+  int pos = 4;
+  int digit = (barcode / (int)pow(10, pos - 1)) % 10;
+  return digit;
 }
 
 // function to return the hash value based on the fifth digit
 unsigned int hashfct5(unsigned int barcode) {
-    // TO BE COMPLETED
-    unsigned int d;
-    return d;
+  int pos = 3;
+  int digit = (barcode / (int)pow(10, pos - 1)) % 10;
+  return digit;
 }
 
-// function to return the hash value based on the fourth digit
+// function to return the hash value based on the sixth digit
 unsigned int hashfct6(unsigned int barcode) {
-    // TO BE COMPLETED
-    unsigned int d;
-    return d;
+  int pos = 2;
+  int digit = (barcode / (int)pow(10, pos - 1)) % 10;
+  return digit;
 }
 
-// function to return the hash value based on the fifth digit
+// function to return the hash value based on the seventh digit
 unsigned int hashfct7(unsigned int barcode) {
-    // TO BE COMPLETED
-    unsigned int d;
-    return d;
+  int pos = 1;
+  int digit = (barcode / (int)pow(10, pos - 1)) % 10;
+  return digit;
 }
-
 
 // Constructor for struct Item
 Item::Item(string itemColor, string itemShape, string itemBrand,
@@ -87,6 +87,18 @@ void ItemCollection::readTextfile(string filename) {
 }
 
 void ItemCollection::addItem(string itemColor, string itemShape, string itemBrand, unsigned int barcode) {
+  // create item object
+  //Item item {itemColor, itemShape, itemBrand, barcode};
+
+  // insert item into each hash table
+  // hT1[hashfct1(item.barcode_)].push_back(item);
+  // hT2[hashfct2(item.barcode_)].push_back(item);
+  // hT3[hashfct3(item.barcode_)].push_back(item);
+  // hT4[hashfct4(item.barcode_)].push_back(item);
+  // hT5[hashfct5(item.barcode_)].push_back(item);
+  // hT6[hashfct6(item.barcode_)].push_back(item);
+  // hT7[hashfct7(item.barcode_)].push_back(item);
+
   // TO BE COMPLETED
   // function that adds the specified pair of glasses to main display (i.e., to all hash tables)
 }
