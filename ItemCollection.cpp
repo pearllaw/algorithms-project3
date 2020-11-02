@@ -88,28 +88,36 @@ void ItemCollection::readTextfile(string filename) {
 
 void ItemCollection::addItem(string itemColor, string itemShape, string itemBrand, unsigned int barcode) {
   // create item object
-  //Item item {itemColor, itemShape, itemBrand, barcode};
-
-  // insert item into each hash table
-  // hT1[hashfct1(item.barcode_)].push_back(item);
-  // hT2[hashfct2(item.barcode_)].push_back(item);
-  // hT3[hashfct3(item.barcode_)].push_back(item);
-  // hT4[hashfct4(item.barcode_)].push_back(item);
-  // hT5[hashfct5(item.barcode_)].push_back(item);
-  // hT6[hashfct6(item.barcode_)].push_back(item);
-  // hT7[hashfct7(item.barcode_)].push_back(item);
-
-  // TO BE COMPLETED
-  // function that adds the specified pair of glasses to main display (i.e., to all hash tables)
+  Item item{itemColor, itemShape, itemBrand, barcode};
+  
+  // insert item into table
+  int key = item.barcode_;
+  hT1.insert({key, item});
+  hT2.insert({key, item});
+  hT3.insert({key, item});
+  hT4.insert({key, item});
+  hT5.insert({key, item});
+  hT6.insert({key, item});
+  hT7.insert({key, item});
 }
 
 bool ItemCollection::removeItem(unsigned int barcode) {
-  // TO BE COMPLETED
-  // function that removes the pair of glasses specified by the barcode from the display
-  // if pair is found, then it is removed and the function returns true
-  // else returns false
-
+  // if product key is in hash table, remove item and return true; otherwise return false 
+  if (hT1.find(barcode) != hT1.end() || hT2.find(barcode) != hT2.end() || 
+    hT3.find(barcode) != hT3.end() || hT4.find(barcode) != hT4.end() || 
+    hT5.find(barcode) != hT5.end() || hT6.find(barcode) != hT6.end() || 
+    hT7.find(barcode) != hT7.end())
+  {
+    hT1.erase(barcode);
+    hT2.erase(barcode);
+    hT3.erase(barcode);
+    hT4.erase(barcode);
+    hT5.erase(barcode);
+    hT6.erase(barcode);
+    hT7.erase(barcode);
     return true;
+  }
+  return false;
 }
 
 unsigned int ItemCollection::bestHashing() {
