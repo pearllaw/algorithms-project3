@@ -3,6 +3,7 @@
 #include <fstream>
 #include <stdexcept>
 #include <cmath>
+#include <algorithm>
 #include "ItemCollection.hpp"
 
 using std::string;
@@ -122,25 +123,66 @@ bool ItemCollection::removeItem(unsigned int barcode) {
 
 unsigned int ItemCollection::bestHashing() {
   // TO BE COMPLETED
-  // function that decides the best has function, i.e. the ones among
-  // fct1-fct7 that creates the most balanced hash table for the current
-  // ItemCollection data member allItems
 
-	// Hints:
-	// Calculate the balance of each hashtable, one by one.
-	/*
-	 for (unsigned i=0; i<10; ++i) {
-    cout << hT1.bucket_size(i); // Call bucket_size() to get the size of each bucket
+
+  unsigned int balance[8];
+  balance[0] = 0;
+
+  unsigned int min_loc, max_loc, min_val;
+
+  for (unsigned int i = 1; i < 8; ++i) {
+    unsigned int bucket_vals[10];
+	  //created a case for each of the 7 checks
+    for (unsigned int j = 0; j < 10; ++j) {
+      switch (i) {
+        case 1:
+          bucket_vals[j] = hT1.bucket_size(j);
+          break;
+
+        case 2:
+          bucket_vals[j] = hT2.bucket_size(j);
+          break;
+
+        case 3:
+          bucket_vals[j] = hT3.bucket_size(j);
+          break;
+
+        case 4:
+          bucket_vals[j] = hT4.bucket_size(j);
+          break;
+
+        case 5:
+          bucket_vals[j] = hT5.bucket_size(j);
+          break;
+
+        case 6:
+          bucket_vals[j] = hT6.bucket_size(j);
+          break;
+
+        case 7:
+          bucket_vals[j] = hT7.bucket_size(j);
+          break;
+
+        default:
+          break;
+      }
+    }
+
+    min_loc = *std::min_element(bucket_vals, bucket_vals + 10);
+    max_loc = *std::max_element(bucket_vals, bucket_vals + 10);
+
+    balance[i] = max_loc - min_loc;
   }
-	*/
-	// Then, calculate the lowest balance
 
-    unsigned int balance[8];
-    balance[0] = 0;
+  min_val = balance[1];
+  for (size_t i = 2; i < 8; i++) {
+    if (min_val > balance[i]) {
+      min_val = balance[i];
+      min_loc = i;
+    }
+  }
 
-    unsigned int min_loc, max_loc;
-    
-    return min_loc;
+  return min_loc;
 }
 
 // ALREADY COMPLETED
