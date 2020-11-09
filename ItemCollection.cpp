@@ -122,9 +122,6 @@ bool ItemCollection::removeItem(unsigned int barcode) {
 }
 
 unsigned int ItemCollection::bestHashing() {
-  // TO BE COMPLETED
-
-
   unsigned int balance[8];
   balance[0] = 0;
 
@@ -175,6 +172,7 @@ unsigned int ItemCollection::bestHashing() {
   }
 
   min_val = balance[1];
+  
   for (size_t i = 2; i < 8; i++) {
     if (min_val > balance[i]) {
       min_val = balance[i];
